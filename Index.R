@@ -2,11 +2,42 @@
 filas <- function(numero.de.filas) {
   vector <- c()
   
-  for (i in 1:numero.de.filas) {
-    valor <- readline("Ingrese los valores a continuación: " )
-    vector[i] <- valor
-    print(vector)
-  }
+  cat("
+Sus valores son:
+  
+(1) Tipo número
+(2) Tipo texto
+
+")
+  menu <- "Elige una opción escribiendo el número: "
+  
+  opcion <- as.integer(readline(menu))
+  
+  for (i in 1:numero.de.filas) suppressWarnings({
+    
+    if (is.na(opcion)) {
+      
+      message("❌ Tu respuesta no es valida")
+      
+    } else if (opcion == 1) {
+      
+      valor <- as.numeric(readline("Ingrese los valores a continuación: " ))
+      vector[i] <- valor
+      print(vector) 
+      
+      
+    } else if (opcion == 2) {
+      
+      valor <- readline("Ingrese los valores a continuación: " )
+      vector[i] <- valor
+      print(vector) 
+      
+    } else {
+      
+      message("❌ Ingrese una opción correcta")
+      
+    }
+  })
   return(vector)
 }
 
@@ -67,7 +98,7 @@ run <- function() {
 }
 
 cat("
-¡Bienvenido al creador de data frames! 🧮
+¡Bienvenido al creador de data frames!
 
 ")
 
